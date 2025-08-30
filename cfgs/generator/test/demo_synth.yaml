@@ -1,0 +1,146 @@
+device_generator:
+out_dir: /autofs/space/yogurt_002/users/pl629/results/BrainID/demo_synth
+
+ 
+test_itr_limit: 10  # n_subjects
+
+num_deformations: 1 # n_deformations for each subj
+all_contrasts: 10 # n_deformations for each deformation: >= 1, <= all_samples
+
+mild_samples: 1
+all_samples: 1 # n_samples within each subject
+test_mild_samples: 2
+test_all_samples: 4 # n_samples within each subject
+
+
+
+split: test # train or test
+dataset_names: ['HCP'] # list of datasets
+dataset_probs:
+modality_probs: {
+  'ADHD': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'HCP': {'T1': 0.3333, 'T2': 0.6667, 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'AIBL': {'T1': 0.25, 'T2': 0.5, 'FLAIR': 0.75, 'CT': 0., 'synth': 1.},
+  'OASIS': {'T1': 0.3333, 'T2': 0., 'FLAIR': 0., 'CT': 0.6667, 'synth': 1.},
+  'ADNI': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ADNI3': {'T1': 0.3333, 'T2': 0., 'FLAIR': 0.6667, 'CT': 0., 'synth': 1.},
+  'ATLAS': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ISLES': {'T1': 0., 'T2': 0., 'FLAIR': 0.5, 'CT': 0., 'synth': 1.},
+} 
+mix_synth_prob: 0. # mix synth with real images
+dataset_option: brain_id
+
+# setups for training/testing tasks 
+task:
+  T1: True
+  T2: False
+  FLAIR: False
+  CT: False
+
+  segmentation: False 
+  registration: False
+  surface: False
+  distance: False 
+  bias_field: False
+
+  pathology: True
+  super_resolution: False
+
+  contrastive: False
+
+# setups for augmentation functions to apply
+augmentation_steps: ['gamma', 'bias_field', 'resample', 'noise'] 
+
+# setups for generator
+generator:
+
+  size: [128, 128, 128]
+
+  photo_prob: 0.2
+  max_rotation: 15
+  max_shear: 0.2
+  max_scaling: 0.2
+  nonlin_scale_min: 0.03
+  nonlin_scale_max: 0.06
+  nonlin_std_max: 4
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 5
+  noise_std_max: 15
+  exvixo_prob: 0.25
+  exvixo_prob_vs_photo: 0.66666666666666
+
+
+  pv: True
+  random_shift: False
+  deform_one_hots: False
+  integrate_deformation_fields: False
+  produce_surfaces: False
+  bspline_zooming: False  
+  n_steps_svf_integration: 8
+  nonlinear_transform: True
+
+
+  ct_prob: 0
+  flip_prob: 0. 
+  
+  pathology_prob: 0.5
+  augment_pathology: True
+
+
+  # brain-id customized setups
+
+  # mild-to-severe intra-subject aug params
+  mild_samples: 2
+  all_samples: 4
+  all_contrasts: 4 # >= 1, <= all_samples
+  num_deformations: 1
+
+
+
+
+
+pathology_shape_generator:
+  perlin_res: [2, 2, 2] # shape must be a multiple of res
+  integ_method: dopri5 # choices=['dopri5', 'adams', 'rk4', 'euler'] 
+  bc: neumann # choices=['neumann', 'cauchy', 'dirichlet', 'source_neumann', 'dirichlet_neumann'] 
+  V_multiplier: 500
+  dt: 0.1
+  max_nt: 10 # >= 2
+  pathol_thres: 0.2
+
+
+
+
+# brain-id customized setups
+
+mild_generator:   
+  bag_prob: 0.1
+  bag_scale_min: 0.01
+  bag_scale_max: 0.02
+  bf_scale_min: 0.01
+  bf_scale_max: 0.02
+  bf_std_min: 0.
+  bf_std_max: 0.02
+  gamma_std: 0.01
+  noise_std_min: 0.
+  noise_std_max: 0.02 
+
+
+severe_generator:   
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 5
+  noise_std_max: 15 

@@ -1,0 +1,25 @@
+## job specific set ups ## 
+exp_name: dist #wosr_reggrad #hemis # wosr_reggrad_lowres # age_pool
+job_name: l6_16
+init_method: "tcp://localhost:9993"
+
+eval_only: False 
+debug: False 
+
+resume: True 
+reset_epoch: False
+resume_optim: True  
+ckp_path: /autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/dist/l6_16/0806-1024/ckp/checkpoint_latest.pth
+
+
+ 
+n_epochs: 2000
+lr_drops: [1200] # [70, 90] # [120] # [70, 90] 
+
+condition: #mask+flip # mask, flip, mask+flip
+
+log_itr: 200
+vis_itr: 6000
+
+
+num_levels: 6 # 5 (1024), 6 (2054), 7 (4096)

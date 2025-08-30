@@ -1,0 +1,24 @@
+## job specific set ups ##  
+exp_name: two-stage-inpaint-masked
+job_name: adhd
+init_method: "tcp://localhost:9997"
+
+eval_only: False 
+debug: False 
+
+resume: True
+reset_epoch: False
+resume_optim: True
+pathol_ckp_path: /autofs/space/yogurt_002/users/pl629/results/BrainID/two-stage-inpaint-masked/adhd/0430-1027/ckp/checkpoint_latest_pathol.pth
+task_ckp_path: /autofs/space/yogurt_002/users/pl629/results/BrainID/two-stage-inpaint-masked/adhd/0430-1027/ckp/checkpoint_latest_task.pth
+
+n_epochs: 1500
+lr_drops: [] # [70, 90] # [120] # [70, 90]
+
+backbone: unet3d+unet3d # options: unet2d, unet3d, unet3d_sep, unet3d+unet3d
+
+condition: mask+flip # mask, flip, mask+flip
+
+#log_itr: 1
+#vis_itr: 1
+

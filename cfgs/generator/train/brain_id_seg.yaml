@@ -1,0 +1,126 @@
+device_generator: 
+
+split: train # NOTE: train or test
+
+dataset_names: [] # NOTE: None for all, 'ADHD200' for age estimation
+dataset_probs:
+modality_probs: { 
+  'ADHD200': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'HCP': {'T1': 0.3333, 'T2': 0.6667, 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'AIBL': {'T1': 0.25, 'T2': 0.5, 'FLAIR': 0.75, 'CT': 0., 'synth': 1.},
+  'OASIS3': {'T1': 0.25, 'T2': 0.5, 'FLAIR': 0., 'CT': 0.75, 'synth': 1.},
+  'ADNI': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ADNI3': {'T1': 0.3333, 'T2': 0., 'FLAIR': 0.6667, 'CT': 0., 'synth': 1.},
+  'ATLAS': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ISLES': {'T1': 0., 'T2': 0., 'FLAIR': 0.5, 'CT': 0., 'synth': 1.},
+
+  # TODO
+  'ABIDE': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'Buckner40': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'COBRE': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'Chinese-HCP': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ISBI2015': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'MCIC': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.}, 
+} 
+mix_synth_prob: 0.2 # blend synth with real images
+dataset_option: brain_id
+segment_prefix: brainseg_with_extracerebral
+
+# setups for training/testing tasks 
+task:
+  T1: False
+  T2: False
+  FLAIR: False
+  CT: False  # NOTE: turn off for photo_hemis setup
+ 
+  segmentation: True
+  distance: False 
+  bias_field: False 
+  registration: False
+
+  # downstream
+  super_resolution: False  
+  age: False
+
+  surface: False 
+  pathology: False  
+  contrastive: False
+
+
+# setups for generator
+generator:
+
+  size: [160, 160, 160] # [128, 128, 128], [160, 160, 160]
+
+  left_hemis_only: False # UNDER TESTING
+  low_res_only: False # UNDER TESTING
+
+  photo_prob: 0.2
+  max_rotation: 15
+  max_shear: 0.2
+  max_scaling: 0.2
+  nonlin_scale_min: 0.03
+  nonlin_scale_max: 0.06
+  nonlin_std_max: 4
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 0.05
+  noise_std_max: 1.
+  exvixo_prob: 0.25
+  exvixo_prob_vs_photo: 0.66666666666666
+
+  pv: True
+  random_shift: False
+  deform_one_hots: False
+  integrate_deformation_fields: False
+  produce_surfaces: False
+  bspline_zooming: False  
+  n_steps_svf_integration: 8
+  nonlinear_transform: True
+
+  ct_prob: 0
+  flip_prob: 0.5
+  
+
+  # brain-id customized setups
+
+  # mild-to-severe intra-subject aug params
+  mild_samples: 0 # 2
+  all_samples: 1 # 4
+  all_contrasts: 1 # 4 # >= 1, <= all_samples
+  num_deformations: 1
+
+
+
+# brain-id customized setups
+
+mild_generator:   
+  bag_prob: 0.1
+  bag_scale_min: 0.01
+  bag_scale_max: 0.02
+  bf_scale_min: 0.01
+  bf_scale_max: 0.02
+  bf_std_min: 0.
+  bf_std_max: 0.02
+  gamma_std: 0.01
+  noise_std_min: 0.
+  noise_std_max: 0.02 
+
+
+severe_generator:   
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 0.05 # 0.05 # 5
+  noise_std_max: 1. # 0.15 # 15

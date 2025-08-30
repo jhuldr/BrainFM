@@ -1,0 +1,149 @@
+device_generator:
+
+data_root: /autofs/vast/lemon/data_curated/brain_mris_QCed
+
+
+split: train # train or test
+split_root: /autofs/vast/lemon/temp_stuff/peirong/train_test_split
+train_txt: /autofs/vast/lemon/temp_stuff/peirong/train_test_split/train.txt
+test_txt: /autofs/vast/lemon/temp_stuff/peirong/train_test_split/test.txt
+
+
+dataset_names: ['ADNI'] # list of datasets
+dataset_probs: # [1.] 
+modality_probs: { # default
+  'ADHD200': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'HCP': {'T1': 0.3333, 'T2': 0.6667, 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'AIBL': {'T1': 0.25, 'T2': 0.5, 'FLAIR': 0.75, 'CT': 0., 'synth': 1.},
+  'OASIS3': {'T1': 0.25, 'T2': 0.5, 'FLAIR': 0., 'CT': 0.75, 'synth': 1.},
+  'ADNI': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ADNI3': {'T1': 0.3333, 'T2': 0., 'FLAIR': 0.6667, 'CT': 0., 'synth': 1.},
+  'ATLAS': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ISLES': {'T1': 0., 'T2': 0., 'FLAIR': 0.5, 'CT': 0., 'synth': 1.},
+
+  # TODO
+  'ABIDE': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'Buckner40': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'COBRE': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'Chinese-HCP': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'ISBI2015': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.},
+  'MCIC': {'T1': 0.5, 'T2': 0., 'FLAIR': 0., 'CT': 0., 'synth': 1.}, 
+} 
+mix_synth_prob: 0. # mix synth with real images
+dataset_option: default # or brain_id
+segment_prefix: brainseg_with_extracerebral
+
+
+# setups for training/testing tasks 
+task:
+  T1: True
+  T2: True
+  FLAIR: True
+  CT: True
+ 
+  segmentation: True
+  distance: True 
+  bias_field: True
+  registration: True
+
+  super_resolution: False 
+  surface: False 
+  pathology: False 
+
+  contrastive: False
+
+
+# setups for augmentation functions to apply
+augmentation_steps: {'synth': ['gamma', 'bias_field', 'resample', 'noise'], 'real': ['gamma', 'bias_field', 'resample', 'noise']} 
+
+
+# setups for generator
+generator:
+
+  size: [128, 128, 128]
+
+  photo_prob: 0.2
+  max_rotation: 15
+  max_shear: 0.2
+  max_scaling: 0.2
+  nonlin_scale_min: 0.03
+  nonlin_scale_max: 0.06
+  nonlin_std_max: 4
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 5
+  noise_std_max: 15
+  exvixo_prob: 0.25
+  exvixo_prob_vs_photo: 0.66666666666666
+
+
+  pv: True
+  random_shift: False
+  deform_one_hots: False
+  
+  produce_surfaces: False
+  bspline_zooming: False  
+  n_steps_svf_integration: 8
+  nonlinear_transform: True 
+
+  left_hemis_only: False
+  low_res_only: False
+  ct_prob: 0
+  flip_prob: 0.5
+  
+  pathology_prob: 0. # pathology_prob when synth
+  random_shape_prob: 0. # initialize pathol shape from random noise (instead of existing shapes)
+  augment_pathology: False 
+
+
+synth_image_generator:     
+  noise_std_min: 5.
+  noise_std_max: 15. 
+real_image_generator:     
+  noise_std_min: 0.
+  noise_std_max: 0.02 
+
+
+pathology_shape_generator:
+  perlin_res: [2, 2, 2] # shape must be a multiple of res
+  mask_percentile_min: 85
+  mask_percentile_max: 99.9
+  integ_method: dopri5 # choices=['dopri5', 'adams', 'rk4', 'euler'] 
+  bc: neumann # choices=['neumann', 'cauchy', 'dirichlet', 'source_neumann', 'dirichlet_neumann'] 
+  V_multiplier: 500
+  dt: 0.1
+  max_nt: 10 # >= 2
+  pathol_thres: 0.5
+  pathol_tol: 0.0000001 # if pathol mean < tol, skip
+
+
+### some constants
+
+max_surf_distance: 3. # clamp at plus / minus this number (both the ground truth and the prediction)
+
+## NEW VAST synth 
+label_list_segmentation_brainseg_with_extracerebral: [0, 11, 12, 13, 16, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 46,
+                                   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 15, 17, 47, 49, 51, 53, 55,
+                                   18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 48, 50, 52, 54, 56] 
+n_neutral_labels_brainseg_with_extracerebral: 20
+
+## synth
+label_list_segmentation_with_csf: [0,14,15,16,24,77,85,   2, 3, 4, 7, 8, 10,11,12,13,17,18,26,28,   41,42,43,46,47,49,50,51,52,53,54,58,60] # 33
+n_neutral_labels_with_csf: 7
+label_list_segmentation_without_csf: [0,14,15,16,77,85,   2, 3, 4, 7, 8, 10,11,12,13,17,18,26,28,   41,42,43,46,47,49,50,51,52,53,54,58,60]
+n_neutral_labels_without_csf: 6
+
+
+## synth_hemi
+# without cerebellum and brainstem
+label_list_segmentation: [0, 2, 3, 4, 10, 11, 12, 13, 17, 18, 26, 28, 77]
+n_neutral_labels: 6
+
+# with cerebellum and brainstem  
+label_list_segmentation_with_cb: [0, 2, 3, 4, 7, 8, 10, 11, 12, 13, 16, 17, 18, 26, 28, 77]

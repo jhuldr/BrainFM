@@ -1,0 +1,10 @@
+## job specific set ups ##  
+init_method: "tcp://localhost:9999"
+
+eval_only: True 
+debug: False 
+
+
+backbone: unet3d #+unet3d # options: unet2d, unet3d, unet3d_sep, unet3d+unet3d
+num_levels: 6 # 5 (1024), 6 (2054), 7 (4096)
+condition: #mask #+flip # mask, flip, mask+flip

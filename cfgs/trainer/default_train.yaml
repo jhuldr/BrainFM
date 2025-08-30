@@ -1,0 +1,161 @@
+
+job_name: default
+exp_name: default
+
+## paths
+out_root: lemon # yogurt or lemon
+root_dir_lemon: /autofs/vast/lemon/temp_stuff/peirong # mlsc run
+root_dir_yogurt_out: /autofs/space/yogurt_002/users/pl629 # desktop run
+out_dir: results/MTBrainID
+
+
+supervised_seg_cnn_weights: /autofs/space/yogurt_002/users/pl629/ckp/supervised_segmentation_model.pth
+feat_ext_ckp_path:
+ckp_path:
+
+supervised_pathol_seg_ckp_path: {'feat': '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_feat_epoch_35.pth', 
+                                  'task': '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_epoch_35.pth'}
+supervised_aux_pathol_seg_ckp_path: {'feat': '', 
+                                    'task': ''}
+
+
+
+device_segmenter: 
+
+
+task_f_maps: [64]
+unit_feat: True
+
+
+## losses and weights
+losses:
+  image_grad: True
+  registration_grad: True
+  registration_smooth: False
+  registration_hessian: False 
+  bias_field_log_type: l2 # l1 or l2 
+  # archived #
+  image_grad_mask: False
+  uncertainty: # only for recon or sr (regression tasks); options: { gaussian, laplace }
+  implicit_pathol: False
+
+weights:
+  seg_ce: 1.
+  seg_dice: 1.
+  pathol_ce: 1.
+  pathol_dice: 1.
+  implicit_pathol_ce: 1.
+  implicit_pathol_dice: 1.
+  dist: 1.
+  image: 1.
+  image_grad: 1.
+  seg_supervised: 1.
+  bias_field_log: 1.
+  reg: 1.
+  reg_grad: 1.
+  contrastive: 1.
+
+  age: 1.
+  surface: 1.
+  distance: 1.
+  registration: 1.
+  registration_grad: 1.
+  registration_smooth: 1.
+  registration_hessian: 1.
+
+
+## training params
+start_epoch: 0
+train_itr_limit: # if not None, it sets the max itr per epoch 
+train_subset: #0.2
+train_txt:
+
+resume: False
+reset_epoch: False
+resume_optim: True
+resume_lr_scheduler: True
+freeze_feat: False
+
+
+batch_size: 1
+
+n_epochs: 400
+lr_scheduler: multistep # cosine, multistep
+lr_drops: [250,300]
+lr_drop_multi: 0.1
+lr: 0.0001 # Learning rate at the end of linear warmup (highest LR used during training)
+min_lr: 0.000001 # Target LR at the end of optimization. We use a cosine LR schedule with linear warmup
+warmup_epochs: 1 # Number of epochs for the linear learning-rate warm up
+
+feat_opt:  
+  lr: 0.0001 # Learning rate at the end of linear warmup (highest LR used during training)
+  min_lr: 0.000001 # Target LR at the end of optimization. We use a cosine LR schedule with linear warmup 
+
+
+optimizer: adamw # adam, adamw
+weight_decay: 0 # 0.04 # Final value of the weight decay. A cosine schedule for WD and using a larger decay by the end of training improves performance for ViTs.
+weight_decay_end: 0 # 0.4 # Final value of the weight decay. A cosine schedule for WD and using a larger decay by the end of training improves performance for ViTs.
+momentum: 1 # 1 as disabling momentum
+
+# gradient clipping max norm
+clip_max_norm: 0.
+freeze_last_layer: 0 #Number of epochs during which we keep the output layer fixed. Typically doing so during the first epoch helps training. Try increasing this value if the loss does not decrease
+
+
+
+## testing params
+eval_only: False
+debug: False 
+test_itr_limit: 
+test_subset:
+test_txt:
+
+ 
+
+################################
+########### Backbone ###########
+################################
+
+condition: # mask, flip, mask+flip
+
+backbone: unet3d # options: unet2d, unet3d, unet3d_sep, unet3d+unet3d
+
+
+### UNet setting ###
+in_channels: 1 
+f_maps: 64 
+f_maps_supervised_seg_cnn: 32
+num_groups: 8
+num_levels: 5
+layer_order: 'gcl'
+final_sigmoid: False
+
+
+### DDPM_Pseudo3D setting ###
+ema_rate: 0.9999
+use_fp16: False
+fp16_scale_growth: 0.001
+
+
+
+
+
+
+## UNDER TESTING ##
+relative_weight_lesions: 1.0 # for now...
+
+
+## visualizer params
+visualizer:
+  make_results: False
+  save_image: False
+  spacing: [8, 8, 8] 
+
+  feat_vis: True
+  feat_vis_num: 10 # fixed number of feature channels to plot
+
+## logging intervals
+val_epoch: 100000 # must be multiplicable by save_model_epoch
+
+log_itr: 100
+vis_itr: 1000
