@@ -4,17 +4,17 @@ exp_name: default
 
 ## paths
 out_root: lemon # yogurt or lemon
-root_dir_lemon: /autofs/vast/lemon/temp_stuff/peirong # mlsc run
-root_dir_yogurt_out: /autofs/space/yogurt_002/users/pl629 # desktop run
-out_dir: results/MTBrainID
+root_dir_lemon: outs # mlsc run
+root_dir_yogurt_out: outs # desktop run
+out_dir: BrainFM
 
 
-supervised_seg_cnn_weights: /autofs/space/yogurt_002/users/pl629/ckp/supervised_segmentation_model.pth
+supervised_seg_cnn_weights: ckp/supervised_segmentation_model.pth
 feat_ext_ckp_path:
 ckp_path:
 
-supervised_pathol_seg_ckp_path: {'feat': '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_feat_epoch_35.pth', 
-                                  'task': '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_epoch_35.pth'}
+supervised_pathol_seg_ckp_path: {'feat': 'ckp/Supv/supv_adni3_flair2pathol_feat_epoch_35.pth', 
+                                  'task': 'ckp/Supv/supv_adni3_flair2pathol_epoch_35.pth'}
 supervised_aux_pathol_seg_ckp_path: {'feat': '', 
                                     'task': ''}
 

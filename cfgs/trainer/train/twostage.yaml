@@ -9,8 +9,8 @@ debug: False
 resume: True
 reset_epoch: False
 resume_optim: True
-pathol_ckp_path: /autofs/space/yogurt_002/users/pl629/results/BrainID/two-stage-inpaint-masked/adhd/0430-1027/ckp/checkpoint_latest_pathol.pth
-task_ckp_path: /autofs/space/yogurt_002/users/pl629/results/BrainID/two-stage-inpaint-masked/adhd/0430-1027/ckp/checkpoint_latest_task.pth
+pathol_ckp_path: outs/BrainFM/two-stage-inpaint-masked/adhd/0430-1027/ckp/brainfm_pretrained_pathol.pth
+task_ckp_path: outs/BrainFM/two-stage-inpaint-masked/adhd/0430-1027/ckp/brainfm_pretrained_task.pth
 
 n_epochs: 1500
 lr_drops: [] # [70, 90] # [120] # [70, 90]

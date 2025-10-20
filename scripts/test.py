@@ -104,9 +104,9 @@ def get_info(t1):
 #################################
 
 
-gen_cfg = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/test/demo_test.yaml'
-gen_hemis_cfg = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/test/demo_test_hemis.yaml'
-model_cfg = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/test/demo_test.yaml'
+gen_cfg = 'cfgs/generator/test/demo_test.yaml'
+gen_hemis_cfg = 'cfgs/generator/test/demo_test_hemis.yaml'
+model_cfg = 'cfgs/trainer/test/demo_test.yaml'
 
 #win_size = [192, 192, 192] 
 win_size = [160, 160, 160] 
@@ -115,7 +115,7 @@ mask_output = False
 
 exclude_keys = ['segmentation']
 data_root = '/autofs/vast/lemon/data_curated/brain_mris_QCed'
-split_txt = '/autofs/vast/lemon/temp_stuff/peirong/train_test_split/test.txt'
+split_txt = 'train_test_split/test.txt'
 names, datasets = prepare_paths(data_root, split_txt)
 
 
@@ -124,19 +124,19 @@ max_num_per_dataset  = None #5
 
 zero_crop = False
 
-main_save_dir = make_dir('/autofs/space/yogurt_002/users/pl629/results/MTBrainID/test/', reset = False)
+main_save_dir = make_dir('outs/BrainFM/test/', reset = False)
 
 models = [
-    #('test_reggr', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/wosr_reggrad/l6_16/1025-1744/ckp/checkpoint_latest.pth'),
-    #('test_lowres', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/wosr_reggrad_lowres/l6_16/1025-1746/ckp/checkpoint_latest.pth'),
-    ('test_sr', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/sr/l6_16/0926-2035/ckp/checkpoint_latest.pth'),
-    #('test_sr_lowres', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/sr_lowres/l6_16/0926-2025/ckp/checkpoint_latest.pth'),
-    #('test_hemis', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/hemis/l6_16/0806-1008/ckp/checkpoint_latest.pth'),
+    #('test_reggr', 'outs/wosr_reggrad/l6_16/1025-1744/ckp/brainfm_pretrained.pth'),
+    #('test_lowres', 'outs/wosr_reggrad_lowres/l6_16/1025-1746/ckp/brainfm_pretrained.pth'),
+    ('test_sr', 'outs/sr/l6_16/0926-2035/ckp/brainfm_pretrained.pth'),
+    #('test_sr_lowres', 'outs/sr_lowres/l6_16/0926-2025/ckp/brainfm_pretrained.pth'),
+    #('test_hemis', 'outs/hemis/l6_16/0806-1008/ckp/brainfm_pretrained.pth'),
 
-    #('comp_synth', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/synth/l6_16/0924-0929/ckp/checkpoint_latest.pth'),
-    #('comp_dist', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/dist/l6_16/0806-1024/ckp/checkpoint_latest.pth'),
-    #('comp_reg', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/reg/l6_16/0806-1029/ckp/checkpoint_latest.pth'),
-    #('comp_bf', '/autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/bf/l6_16/0806-1026/ckp/checkpoint_latest.pth'),
+    #('comp_synth', 'outs/synth/l6_16/0924-0929/ckp/brainfm_pretrained.pth'),
+    #('comp_dist', 'outs/dist/l6_16/0806-1024/ckp/brainfm_pretrained.pth'),
+    #('comp_reg', 'outs/reg/l6_16/0806-1029/ckp/brainfm_pretrained.pth'),
+    #('comp_bf', 'outs/bf/l6_16/0806-1026/ckp/brainfm_pretrained.pth'),
 ]
 
 #spacing = [1.5, 1.5, 5] # [1, 1, 1], [1.5, 1.5, 5], [3, 3, 3], None 

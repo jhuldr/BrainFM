@@ -30,8 +30,8 @@ if __name__ == '__main__':
     
 
     #image, mask_image = generate_perlin_noise_3d([128, 128, 128], [2, 2, 2], tileable=(True, False, False), percentile = percentile)
-    #viewVolume(image, names = ['image'], save_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/ShapeID/out/3d')
-    #viewVolume(mask_image, names = ['mask_image'], save_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/ShapeID/out/3d') 
+    #viewVolume(image, names = ['image'], save_dir = 'ShapeID/out/3d')
+    #viewVolume(mask_image, names = ['mask_image'], save_dir = 'ShapeID/out/3d') 
 
 
     #mask_image, aff = read_image('/autofs/space/yogurt_001/users/pl629/data/adni/pathology_probability/subject_193441.nii.gz')
@@ -85,7 +85,7 @@ if __name__ == '__main__':
         noise_t[noise_t > 1] = 1
         noise_t[noise_t <= thres] = 0
         print(i, noise_t.mean())
-        viewVolume(noise_t, names = ['noise_%s' % i], save_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/ShapeID/out/3d/progression')
+        viewVolume(noise_t, names = ['noise_%s' % i], save_dir = 'ShapeID/out/3d/progression')
         
         noise_t[noise_t > 0.] = 1
-        viewVolume(noise_t, names = ['noise_%s_mask' % i], save_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/ShapeID/out/3d/progression')
+        viewVolume(noise_t, names = ['noise_%s_mask' % i], save_dir = 'ShapeID/out/3d/progression')

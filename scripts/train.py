@@ -32,15 +32,15 @@ logger = logging.get_logger(__name__)
 
 
 # default & gpu cfg #
-submit_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/submit.yaml'
+submit_cfg_file = 'cfgs/submit.yaml'
 
-default_gen_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/default.yaml'
+default_gen_cfg_file = 'cfgs/generator/default.yaml'
 
-default_train_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/default_train.yaml'
-default_val_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/default_val.yaml'
+default_train_cfg_file = 'cfgs/trainer/default_train.yaml'
+default_val_file = 'cfgs/trainer/default_val.yaml'
 
-gen_cfg_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/train'
-train_cfg_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/train'
+gen_cfg_dir = 'cfgs/generator/train'
+train_cfg_dir = 'cfgs/trainer/train'
 
 
 def get_params_groups(model):
@@ -194,10 +194,10 @@ def train(args):
 
     for epoch in range(train_args.start_epoch, train_args.n_epochs):
 
-        if os.path.isfile(os.path.join(ckp_output_dir,'checkpoint_latest.pth')):
-            os.rename(os.path.join(ckp_output_dir,'checkpoint_latest.pth'), os.path.join(ckp_output_dir,'checkpoint_latest_bk.pth'))
+        if os.path.isfile(os.path.join(ckp_output_dir,'brainfm_pretrained.pth')):
+            os.rename(os.path.join(ckp_output_dir,'brainfm_pretrained.pth'), os.path.join(ckp_output_dir,'brainfm_pretrained_bk.pth'))
 
-        checkpoint_paths = [ckp_output_dir / 'checkpoint_latest.pth']
+        checkpoint_paths = [ckp_output_dir / 'brainfm_pretrained.pth']
         
         # ============ save model ... ============
         #checkpoint_paths.append(ckp_epoch_dir / f"checkpoint_epoch_{epoch}.pth")

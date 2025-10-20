@@ -9,7 +9,7 @@ debug: False
 resume: True
 reset_epoch: False
 resume_optim: True
-ckp_path: /autofs/space/yogurt_002/users/pl629/results/BrainID/shape-random-disentangle/adhd-synth/0426-1110/ckp/checkpoint_latest.pth
+ckp_path: outs/BrainFM/shape-random-disentangle/adhd-synth/0426-1110/ckp/brainfm_pretrained.pth
 
 n_epochs: 1500
 lr_drops: [] # [70, 90] # [120] # [70, 90]

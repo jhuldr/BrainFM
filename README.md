@@ -31,6 +31,18 @@ pip install -r requirements.txt
 ```
 
 
+## Downloads
+The pre-trained model weight is available on [OneDrive](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/pliu53_jh_edu/EZ_BJ7K6pMJEj9hZ8SA51GYBxH_Nan4fA3a-s4udwvVRog?e=nwZ7JC).
+After downloading, please put them under ckp/.
+
+
+## Demo
+```
+cd scripts 
+python demo_test.py
+```
+
+
 ## Generator
 ```
 cd scripts 
@@ -76,9 +88,6 @@ Refer to "__getitem__" function. Specifically, it includes: <br>
 cd scripts 
 python train.py
 ```
-
-## Downloads
-The pre-trained model weight is available on [OneDrive](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/pliu53_jh_edu/EZ_BJ7K6pMJEj9hZ8SA51GYBxH_Nan4fA3a-s4udwvVRog?e=nwZ7JC).
 
 
 ## Citation

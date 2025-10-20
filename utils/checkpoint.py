@@ -341,7 +341,7 @@ def get_last_checkpoint(path_to_job):
     Args:
         path_to_job (string): the path to the folder of the current job.
     """
-    name = "checkpoint_latest.pyth"
+    name = "brainfm_pretrained.pyth"
     return os.path.join(get_checkpoint_dir(path_to_job), name)
 
 

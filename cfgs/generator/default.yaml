@@ -4,9 +4,9 @@ data_root: /autofs/vast/lemon/data_curated/brain_mris_QCed
 
 
 split: train # train or test
-split_root: /autofs/vast/lemon/temp_stuff/peirong/train_test_split
-train_txt: /autofs/vast/lemon/temp_stuff/peirong/train_test_split/train.txt
-test_txt: /autofs/vast/lemon/temp_stuff/peirong/train_test_split/test.txt
+split_root: train_test_split
+train_txt: train_test_split/train.txt
+test_txt: train_test_split/test.txt
 
 
 dataset_names: ['ADNI'] # list of datasets

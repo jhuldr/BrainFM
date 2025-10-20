@@ -9,7 +9,7 @@ debug: False
 resume: True 
 reset_epoch: False
 resume_optim: True  
-ckp_path: /autofs/vast/lemon/temp_stuff/peirong/results/MTBrainID/reg/l6_16/0806-1029/ckp/checkpoint_latest.pth
+ckp_path: outs/reg/l6_16/0806-1029/ckp/brainfm_pretrained.pth
 
 
 

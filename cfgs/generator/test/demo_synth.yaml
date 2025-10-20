@@ -1,5 +1,5 @@
 device_generator:
-out_dir: /autofs/space/yogurt_002/users/pl629/results/BrainID/demo_synth
+out_dir: outs/BrainFM/demo_synth
 
  
 test_itr_limit: 10  # n_subjects

@@ -12,29 +12,29 @@ device = torch.cuda.current_device() if torch.cuda.is_available() else 'cpu'
 
 # default & gpu cfg # 
 
-#submit_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/submit.yaml'
-#default_gen_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/default.yaml'
+#submit_cfg_file = 'cfgs/submit.yaml'
+#default_gen_cfg_file = 'cfgs/generator/default.yaml'
 
-#default_train_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/default_train.yaml'
-#default_val_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/default_val.yaml'
+#default_train_cfg_file = 'cfgs/trainer/default_train.yaml'
+#default_val_file = 'cfgs/trainer/default_val.yaml'
 
-#gen_cfg_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/test'
-#train_cfg_dir = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/trainer/test'
+#gen_cfg_dir = 'cfgs/generator/test'
+#train_cfg_dir = 'cfgs/trainer/test'
 
-#atlas_path = '/autofs/vast/lemon/temp_stuff/peirong/data/gca.mgz'
+#atlas_path = 'data/gca.mgz'
 
 
 
-submit_cfg_file = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/defaults/submit.yaml'
-default_gen_cfg_file = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/defaults/default_gen.yaml'
+submit_cfg_file = 'cfg/defaults/submit.yaml'
+default_gen_cfg_file = 'cfg/defaults/default_gen.yaml'
 
-default_train_cfg_file = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/defaults/default_train.yaml'
-default_val_file = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/defaults/default_val.yaml'
+default_train_cfg_file = 'cfg/defaults/default_train.yaml'
+default_val_file = 'cfg/defaults/default_val.yaml'
 
 
 gen_cfg_dir = ''
 train_cfg_dir = ''
-atlas_path = '/autofs/vast/lemon/temp_stuff/brainfm/files/gca.mgz'
+atlas_path = 'files/gca.mgz'
 
 
 MNI, aff2 = utils.MRIread(atlas_path)

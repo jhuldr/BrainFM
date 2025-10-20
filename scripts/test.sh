@@ -11,13 +11,13 @@
 #SBATCH --cpus-per-task=24	
 #SBATCH --mem=256G
 #SBATCH --time=6-23:59:59
-#SBATCH --output=/autofs/vast/lemon/temp_stuff/peirong/logs/%j.log # Standard output and error log 
+#SBATCH --output=logs/%j.log # Standard output and error log 
 
 
 # exp-specific cfg #
-#exp_cfg_file='/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/test/feat.yaml'
+#exp_cfg_file='cfgs/test/feat.yaml'
 
 
 date;hostname;pwd
-python /autofs/space/yogurt_003/users/pl629/code/MTBrainID/scripts/test.py #$exp_cfg_file 
+python scripts/test.py #$exp_cfg_file 
 date

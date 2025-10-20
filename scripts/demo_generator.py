@@ -18,8 +18,8 @@ from Generator import build_datasets
 
 
 # default & gpu cfg # 
-default_gen_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/default.yaml' 
-demo_gen_cfg_file = '/autofs/space/yogurt_003/users/pl629/code/MTBrainID/cfgs/generator/test/demo_synth.yaml'
+default_gen_cfg_file = 'cfgs/generator/default.yaml' 
+demo_gen_cfg_file = 'cfgs/generator/test/demo_synth.yaml'
 
 
 def map_back_orig(img, idx, shp):

@@ -12,11 +12,11 @@ from .head import TaskHead, MultiInputTaskHead
 from utils.checkpoint import load_checkpoint 
 
 
-#supersynth_ckp_path = '/autofs/space/yogurt_002/users/pl629/ckp/wmh-synthseg/PAPER_checkpoint_0101.pth'
-supersynth_ckp_path = '/autofs/space/yogurt_002/users/pl629/ckp/wmh-synthseg/AllDataIn_checkpoint_0101.pth'
+#supersynth_ckp_path = 'ckp/wmh-synthseg/PAPER_checkpoint_0101.pth'
+supersynth_ckp_path = 'ckp/wmh-synthseg/AllDataIn_checkpoint_0101.pth'
 
-flair2pathol_feat_ckp_path = '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_feat_epoch_35.pth' 
-flair2pathol_task_ckp_path = '/autofs/space/yogurt_002/users/pl629/ckp/Supv/supv_adni3_flair2pathol_epoch_35.pth' 
+flair2pathol_feat_ckp_path = 'ckp/Supv/supv_adni3_flair2pathol_feat_epoch_35.pth' 
+flair2pathol_task_ckp_path = 'ckp/Supv/supv_adni3_flair2pathol_epoch_35.pth' 
 
 
 
