@@ -16,11 +16,10 @@ os.system('source $FREESURFER_HOME/SetUpFreeSurfer.sh')
 device = torch.cuda.current_device() if torch.cuda.is_available() else 'cpu'
 
 
-gen_cfg = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/full_gen.yaml'
-model_cfg = '/autofs/vast/lemon/temp_stuff/brainfm/cfg/train.yaml'
 
-ckp_path = '/autofs/vast/lemon/temp_stuff/brainfm/ckp/regular.pth' 
-
+model_cfg = 'cfgs/trainer/test/demo_test.yaml'
+gen_cfg = 'cfgs/generator/test/demo_test.yaml' # regular
+ckp_path = 'ckp/brainfm_pretrained.pth' # regular
 
 
 
@@ -44,8 +43,8 @@ if __name__ == '__main__':
 
     ### Demo Example Usage ###
 
-    save_dir = make_dir('/autofs/space/yogurt_002/users/pl629/results/tmp', reset = False)
-    img_path = '/autofs/vast/lemon/temp_stuff/ana/atlas_test_processed/sub-013.nii'
+    save_dir = make_dir('outs/test_feature', reset = False)
+    img_path = 'files/your_test_img.nii'
 
     ### Read Image ###
     im, im_aff = MRIread(img_path)
