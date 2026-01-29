@@ -1,15 +1,14 @@
 
 ## <p align="center">[A Modality-agnostic Multi-task Foundation Model for Human Brain Imaging](https://arxiv.org/abs/2509.00549)</p>
 
-**<p align="center">Peirong Liu<sup>1,2</sup>, Oula Puonti<sup>2</sup>, Xiaoling Hu<sup>2</sup>, Karthik Gopinath<sup>2</sup>, Annabel Sorby-Adams<sup>2</sup>, Daniel C. Alexander<sup>3</sup>, Juan Eugenio Iglesias<sup>2,3,4</sup></p>**
+**<p align="center">Contact: Peirong Liu (peirong[AT]jhu.edu)</sup></p>**
 
- 
 <p align="center">
-<sup>1</sup>Johns Hopkins University<br />
-<sup>2</sup>Harvard Medical School and Massachusetts General Hospital<br />
-<sup>3</sup>University College London <br />
-<sup>4</sup>Massachusetts Institute of Technology
+Department of Electrical and Computer Engineering,<br/>
+Data Science and AI Institute,<br/>
+Johns Hopkins University
 </p>
+
 
 <p align="center">
   <img src="./assets/overview.png" alt="drawing", width="650"/>
