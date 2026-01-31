@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 
 ## Downloads
-The pre-trained model weight is available on [OneDrive](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/pliu53_jh_edu/EZ_BJ7K6pMJEj9hZ8SA51GYBxH_Nan4fA3a-s4udwvVRog?e=nwZ7JC).
+The pre-trained model weight is available on [OneDrive](https://livejohnshopkins-my.sharepoint.com/:f:/g/personal/pliu53_jh_edu/IgBQQLRuGowgS4aiSlHh86hCAd8erNM2383oNJDaKN1zA8A?e=1MPTQu).
 After downloading, please put them under ckp/.
 
 
