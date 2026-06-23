@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+
+# Project outputs and local data
+ckp/
+outs/
+logs/
+test_data_folder/
+ShapeID/out/
