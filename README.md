@@ -1,8 +1,10 @@
-# BrainFM
+<div align="center">
+  <h1>BrainFM<br><sub>A Modality-agnostic Multi-task Foundation Model for Human Brain Imaging</sub></h1>
+</div>
 
-**A Modality-agnostic Multi-task Foundation Model for Human Brain Imaging**
-
-[[arXiv:2509.00549](https://arxiv.org/abs/2509.00549)]
+<p align="center">
+  [<a href="https://arxiv.org/abs/2509.00549">arXiv</a>]
+</p>
 
 <p align="center">
 <b align="center">Contact: Peirong Liu (peirong@jhu.edu)</b>
